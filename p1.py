@@ -1,8 +1,11 @@
-def zero_to_end(lst):
-    non_zero = [num for num in lst if num != 0]
-    zero_count = lst.count(0)
-    result = non_zero + [0] * zero_count
-    return result
-lst = [9, 0, 7, 31, 0, 45, 0, 45, 0, 45, 0, 0, 96, 0]
-result = zero_to_end(lst)
-print(result)
+def sum_even_indexes_and_multiply(lst):
+    if not lst:
+        return 0
+    even_index_sum = sum(lst[::2])
+    return even_index_sum * lst[-1]
+
+# Перевірка прикладів
+print(sum_even_indexes_and_multiply([0, 1, 7, 2, 4, 8]))  
+print(sum_even_indexes_and_multiply([1, 3, 5]))
+print(sum_even_indexes_and_multiply([6]))
+print(sum_even_indexes_and_multiply([]))
