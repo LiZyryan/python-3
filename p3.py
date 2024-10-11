@@ -1,12 +1,21 @@
-def m_dgts_until_s_dgt(number):
-    if number <= 9:
-        return number
-    while number > 9:
-        product = 1
-        for digit in str(number):
-            product *= int(digit)
-        number = product
-    return number
-user_input = int(input("Введіть ціле число: "))
-result = m_dgts_until_s_dgt(user_input)
-print("Результат:", result)
+def correct_sentence(text):
+    sentences = text.split('. ')
+
+    corrected_sentences = []
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if sentence:
+            sentence = sentence[0].upper() + sentence[1:]
+            if not sentence.endswith('.'):
+                sentence += '.'
+            corrected_sentences.append(sentence)
+
+    return ' '.join(corrected_sentences)
+
+
+assert correct_sentence("greetings, friends") == "Greetings, friends.", 'Test1'
+assert correct_sentence("hello") == "Hello.", 'Test2'
+assert correct_sentence("Greetings. Friends") == "Greetings. Friends.", 'Test3'
+assert correct_sentence("Greetings, friends.") == "Greetings, friends.", 'Test4'
+assert correct_sentence("greetings, friends.") == "Greetings, friends.", 'Test5'
+print('ОК')
