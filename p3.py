@@ -1,21 +1,7 @@
-def correct_sentence(text):
-    sentences = text.split('. ')
+def common_elements():
+    set1 = {i for i in range(100) if i % 3 == 0}
+    set2 = {i for i in range(100) if i % 5 == 0}
+    intersection_set = set1.intersection(set2)
+    return intersection_set
 
-    corrected_sentences = []
-    for sentence in sentences:
-        sentence = sentence.strip()
-        if sentence:
-            sentence = sentence[0].upper() + sentence[1:]
-            if not sentence.endswith('.'):
-                sentence += '.'
-            corrected_sentences.append(sentence)
-
-    return ' '.join(corrected_sentences)
-
-
-assert correct_sentence("greetings, friends") == "Greetings, friends.", 'Test1'
-assert correct_sentence("hello") == "Hello.", 'Test2'
-assert correct_sentence("Greetings. Friends") == "Greetings. Friends.", 'Test3'
-assert correct_sentence("Greetings, friends.") == "Greetings, friends.", 'Test4'
-assert correct_sentence("greetings, friends.") == "Greetings, friends.", 'Test5'
-print('ОК')
+assert common_elements() == {0, 75, 45, 15, 90, 60, 30}
