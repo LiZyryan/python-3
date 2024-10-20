@@ -1,10 +1,9 @@
-def is_palindrome(text):
-    cleaned_text = ''.join(char.lower() for char in text if (char.isdigit() or char.isalpha()))
-    return cleaned_text == cleaned_text[::-1]
-
-assert is_palindrome('A man, a plan, a canal: Panama') == True, 'Test1'
-assert is_palindrome('0P') == False, 'Test2'
-assert is_palindrome('a.') == True, 'Test3'
-assert is_palindrome('aurora') == False, 'Test4'
-
-print("ОК")
+def difference(*args):
+    if not args:
+        return 0
+    return round(max(args) - min(args), 2)
+assert difference(1, 2, 3) == 2, 'Test1'
+assert difference(5, -5) == 10, 'Test2'
+assert difference(10.2, -2.2, 0, 1.1, 0.5) == 12.4, 'Test3'
+assert difference() == 0, 'Test4'
+print('OK')
