@@ -1,13 +1,15 @@
-import re
-
-def first_word(text):
-    match = re.search(r"[a-zA-Z']+", text)
-    return match.group(0) if match else ""
-
-assert first_word("Hello world") == "Hello", 'Test1'
-assert first_word("greetings, friends") == "greetings", 'Test2'
-assert first_word("don't touch it") == "don't", 'Test3'
-assert first_word(".., and so on ...") == "and", 'Test4'
-assert first_word("hi") == "hi", 'Test5'
-assert first_word("Hello.World") == "Hello", 'Test6'
-print('OK')
+def generate_cube_numbers(end):
+    num = 2
+    while True:
+        cube = num ** 3
+        if cube > end:
+            return
+        yield cube
+        num += 1
+from inspect import isgenerator
+gen = generate_cube_numbers(1)
+assert isgenerator(gen) == True, 'Test0'
+assert list(generate_cube_numbers(10)) == [8], 'оскільки воно менше 10.'
+assert list(generate_cube_numbers(100)) == [8, 27, 64], '5 у кубі це 125, а воно вже більше 100'
+assert list(generate_cube_numbers(1000)) == [8, 27, 64, 125, 216, 343, 512, 729, 1000], '10 у кубі це 1000'
+print('Ok')
