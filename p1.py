@@ -7,10 +7,7 @@ def prime_generator(end):
                 break
         if is_prime:
             yield num
-
 from inspect import isgenerator
-
-# Тести
 gen = prime_generator(1)
 assert isgenerator(gen) == True, 'Test0'
 assert list(prime_generator(10)) == [2, 3, 5, 7], 'Test1'
