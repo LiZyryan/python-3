@@ -1,15 +1,19 @@
-def pow(x):
-    return x ** 2
-
-def some_gen(begin, end, func):
-    current = begin
-    for _ in range(end):
-        yield current
-        current = func(current)
+def prime_generator(end):
+    for num in range(2, end + 1):
+        is_prime = True
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            yield num
 
 from inspect import isgenerator
 
-gen = some_gen(2, 4, pow)
-assert isgenerator(gen) == True, 'Test1'
-assert list(gen) == [2, 4, 16, 256], 'Test2'
-print('OK')
+# Тести
+gen = prime_generator(1)
+assert isgenerator(gen) == True, 'Test0'
+assert list(prime_generator(10)) == [2, 3, 5, 7], 'Test1'
+assert list(prime_generator(15)) == [2, 3, 5, 7, 11, 13], 'Test2'
+assert list(prime_generator(29)) == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29], 'Test3'
+print('Ok')
